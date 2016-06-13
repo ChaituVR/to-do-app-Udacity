@@ -1,6 +1,6 @@
-1. Let the user set the priority status when creating the todo item
-2. Let Users filter or sort by priority status
-3. Expand the Priority feature to have more than two levels
+1. Let the user set the priority status when creating the todo item -- done
+2. Let Users filter or sort by priority status -- done
+3. Expand the Priority feature to have more than two levels -- done
 4. Add a recycle bin for recovering Deleted todos
 5. Add Colors, so people can associate different todos with each other
 6. Add labels for sorting and filtering

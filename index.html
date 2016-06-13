@@ -10,8 +10,8 @@
 			<header id="header">
 				<h1>todos</h1>
 				<input id="new-todo" placeholder="What needs to be done?" autofocus>
-				<span style="margin-left:190px;">Set Priority:
-					<select class="priorityLev-btn" ><option value="false" selected="selected">No</option><option value="true" >Yes</option></select></span>
+				<span style="margin-left:190px;">Set Priority level:
+					<select class="priorityLev-btn" ><option value="0" selected="selected">0</option><option value="1" >1</option><option value="2" >2</option></select></span>
 
 			</header>
 			<section id="main">
@@ -30,7 +30,7 @@
 			<div class="view">
 				<input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>>
 				<label><%- title %></label>
-				<button class="priority-btn"></button>
+					<select class="priority-btn" ><option value="0" selected="selected">0</option><option value="1" >1</option><option value="2" >2</option></select></span>
 				<button class="edit-btn"></button>
 				<button class="destroy"></button>
 			</div>

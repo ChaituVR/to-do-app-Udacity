@@ -14,11 +14,11 @@ var app = app || {};
 		defaults: {
 			title: '',
 			completed: false,
-			priority:false
+			priority:0
 		},
-     togglePriority:function(){
+     togglePriority:function(val){
 			 this.save({
- 				priority: !this.get('priority')
+ 				priority: $.parseJSON(val)
  			});
 		 },
 		// Toggle the `completed` state of this todo item.

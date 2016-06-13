@@ -24,7 +24,7 @@ var app = app || {};
 			'keydown .edit': 'revertOnEscape',
 			'blur .edit': 'close',
 			'dblclick .edit-btn':'edit',
-			'click .priority-btn': 'togglePriority'
+			'change .priority-btn': 'togglePriority'
 		},
 
 		// The TodoView listens for changes to its model, re-rendering. Since
@@ -52,16 +52,31 @@ var app = app || {};
 
 			this.$el.html(this.template(this.model.toJSON()));
 			this.$el.toggleClass('completed', this.model.get('completed'));
-			this.$el.toggleClass('priority', this.model.get('priority'));
+			this.$el.toggleClass('priority', this.isPrior());
 			this.toggleVisible();
 			this.$input = this.$('.edit');
+			this.$prio= this.$('.priority-btn');
+     this.$prio.val(this.model.get('priority'))
 			return this;
 		},
 
 		toggleVisible: function () {
 			this.$el.toggleClass('hidden', this.isHidden());
 		},
+    isPrior:function(){
+        //console.log(this.model.get('priority'))
+				if(this.model.get('priority')>0){
+					console.log("prior");
+					return true;
+				}
+				else{
+					console.log("NOt")
+					return false;
+				}
+				//return this.model.get('priority')
 
+
+		},
 		isHidden: function () {
 			var filter = app.TodoFilter;
 			if(filter === 'active') {
@@ -90,7 +105,9 @@ var app = app || {};
 			this.$input.focus();
 		},
     togglePriority: function(){
-        this.model.togglePriority();
+
+        this.model.togglePriority(this.$prio.val());
+
 			//this.$el.toggleClass('priority');
 		},
 		// Close the `"editing"` mode, saving changes to the todo.

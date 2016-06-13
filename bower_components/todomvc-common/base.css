@@ -229,17 +229,17 @@ label[for='toggle-all'] {
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	left: 34px;
+	right: 70px;
 	padding: 0 4px;
 	background-color: #fcfcfc;
 	/*color: #d00;*/
 	z-index: 10;
 	/* Mobile Safari */
-	border: none;
-	-webkit-appearance: none;
-	-ms-appearance: none;
-	-o-appearance: none;
-	appearance: none;
+	border-style: solid;
+	height:30px;
+	margin:15px;
+
+
 }
 
 #todo-list li:hover .priority-btn {
