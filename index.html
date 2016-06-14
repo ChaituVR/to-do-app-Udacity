@@ -30,9 +30,9 @@
 			<div class="view">
 				<input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>>
 				<label><%- title %></label>
-					<%= completed  ? '':'<select class="priority-btn" ><option value="0" selected="selected">0</option><option value="1" >1</option><option value="2" >2</option></select></span>' %>
-				<button class="edit-btn"></button>
-				<button class="destroy"></button>
+					<%= completed || deleted ? '':'<select class="priority-btn" ><option value="0" selected="selected">0</option><option value="1" >1</option><option value="2" >2</option></select></span><button class="edit-btn"></button>' %>
+				<%= deleted ? '<a class="restore"title="Restore"></a><button class="destroyPerm" title="Delete Permenently"></button>':'<button class="destroy"></button>'%>
+
 			</div>
 			<input class="edit" value="<%- title %>">
 		</script>

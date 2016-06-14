@@ -116,7 +116,15 @@ var app = app || {};
 
 		// Clear all completed todo items, destroying their models.
 		clearCompleted: function () {
-			_.invoke(app.todos.completed(), 'destroy');
+			//_.invoke(app.todos.completed(), 'destroy');
+
+  console.log(app.todos.completed()[0].attributes.deleted);
+    var k=app.todos.completed()
+		k.forEach(function (todo) {
+			todo.save({
+				deleted: true
+			});
+		});
 			return false;
 		},
 

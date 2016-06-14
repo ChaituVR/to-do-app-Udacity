@@ -19,12 +19,14 @@ var app = app || {};
 		events: {
 			'click .toggle': 'toggleCompleted',
 			'dblclick label': 'edit',
-			'click .destroy': 'sendTodelete',
+			'click .destroy': 'recycleBin',
 			'keypress .edit': 'updateOnEnter',
 			'keydown .edit': 'revertOnEscape',
 			'blur .edit': 'close',
 			'dblclick .edit-btn':'edit',
-			'change .priority-btn': 'togglePriority'
+			'change .priority-btn': 'togglePriority',
+			'click  .restore': 'recycleBin',
+			'click .destroyPerm':'clear'
 		},
 
 		// The TodoView listens for changes to its model, re-rendering. Since
@@ -90,6 +92,7 @@ var app = app || {};
 				return this.model.get('completed') || !this.model.get('priority') ||  this.model.get('deleted')
 			}
 			if(filter === 'completed') {
+
 				return !this.model.get('completed') || this.model.get('deleted');
 			}
 			if(filter === 'deleted') {
@@ -167,7 +170,7 @@ var app = app || {};
 		},
 
 		// Remove the item, destroy the model from *localStorage* and delete its view.
-		sendTodelete:function(){
+		recycleBin:function(){
 			this.model.toggleDelete();
 		},
 		clear: function () {
