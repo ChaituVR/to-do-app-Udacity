@@ -18,13 +18,13 @@ var app = app || {};
 
 		// Filter down the list of all todo items that are finished.
 		completed: function () {
-			return this.where({completed: true});
+			return this.where({completed: true,deleted: false});
 		},
-		
+
 
 		// Filter down the list to only todo items that are still not finished.
 		remaining: function () {
-			return this.where({completed: false});
+			return this.where({completed: false,deleted: false});
 		},
 
 		// We keep the Todos in sequential order, despite being saved by unordered

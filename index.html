@@ -30,7 +30,7 @@
 			<div class="view">
 				<input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>>
 				<label><%- title %></label>
-					<select class="priority-btn" ><option value="0" selected="selected">0</option><option value="1" >1</option><option value="2" >2</option></select></span>
+					<%= completed  ? '':'<select class="priority-btn" ><option value="0" selected="selected">0</option><option value="1" >1</option><option value="2" >2</option></select></span>' %>
 				<button class="edit-btn"></button>
 				<button class="destroy"></button>
 			</div>
@@ -54,6 +54,7 @@
 				</li>
 
 			</ul>
+        <a href="#/deleted" title="Deleted Tasks" id="recycle"></a>
 			<% if (completed) { %>
 			<button id="clear-completed">Clear completed (<%= completed %>)</button>
 			<% } %>

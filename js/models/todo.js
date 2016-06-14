@@ -14,7 +14,8 @@ var app = app || {};
 		defaults: {
 			title: '',
 			completed: false,
-			priority:0
+			priority:0,
+			deleted:false
 		},
      togglePriority:function(val){
 			 this.save({
@@ -25,6 +26,11 @@ var app = app || {};
 		toggle: function () {
 			this.save({
 				completed: !this.get('completed')
+			});
+		},
+		toggleDelete: function () {
+			this.save({
+				deleted: !this.get('deleted')
 			});
 		}
 	});

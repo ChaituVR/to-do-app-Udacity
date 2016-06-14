@@ -19,7 +19,7 @@ var app = app || {};
 		events: {
 			'click .toggle': 'toggleCompleted',
 			'dblclick label': 'edit',
-			'click .destroy': 'clear',
+			'click .destroy': 'sendTodelete',
 			'keypress .edit': 'updateOnEnter',
 			'keydown .edit': 'revertOnEscape',
 			'blur .edit': 'close',
@@ -65,12 +65,12 @@ var app = app || {};
 		},
     isPrior:function(){
         //console.log(this.model.get('priority'))
-				if(this.model.get('priority')>0){
-					console.log("prior");
+				var pri=this.model.get('priority');
+				if(pri>0){
 					return true;
 				}
 				else{
-					console.log("NOt")
+
 					return false;
 				}
 				//return this.model.get('priority')
@@ -78,15 +78,23 @@ var app = app || {};
 
 		},
 		isHidden: function () {
+			$('#toggle-all').show();
 			var filter = app.TodoFilter;
+			if(filter==''){
+				return this.model.get('deleted');
+			}
 			if(filter === 'active') {
-				return this.model.get('completed');
+				return this.model.get('completed') || this.model.get('deleted');
 			}
 			if(filter === 'priority') {
-				return this.model.get('completed') || !this.model.get('priority');
+				return this.model.get('completed') || !this.model.get('priority') ||  this.model.get('deleted')
 			}
 			if(filter === 'completed') {
-				return !this.model.get('completed');
+				return !this.model.get('completed') || this.model.get('deleted');
+			}
+			if(filter === 'deleted') {
+				$('#toggle-all').hide();
+				return !this.model.get('deleted');
 			}
 			return false;
 			// return this.model.get('completed') ?
@@ -135,7 +143,7 @@ var app = app || {};
 					this.model.trigger('change');
 				}
 			} else {
-				this.clear();
+				this.sendTodelete();
 			}
 
 			this.$el.removeClass('editing');
@@ -159,7 +167,11 @@ var app = app || {};
 		},
 
 		// Remove the item, destroy the model from *localStorage* and delete its view.
+		sendTodelete:function(){
+			this.model.toggleDelete();
+		},
 		clear: function () {
+
 			this.model.destroy();
 		}
 	});
