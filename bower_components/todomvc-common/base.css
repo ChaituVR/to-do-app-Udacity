@@ -232,7 +232,7 @@ label[for='toggle-all'] {
 	bottom: 0;
 	right: 70px;
 	padding: 0 4px;
-	background-color: #fcfcfc;
+background-color: #4CAF50;
 	/*color: #d00;*/
 	z-index: 10;
 	/* Mobile Safari */
@@ -607,7 +607,11 @@ hr {
     padding: 6px 20px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: inline;
+		position:absolute;
+		top:22px;
+		right:10px;
+		z-index:10;
     font-size: 16px;
 		margin: 10px;
 }
