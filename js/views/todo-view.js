@@ -55,6 +55,8 @@ var app = app || {};
 			this.$el.html(this.template(this.model.toJSON()));
 			this.$el.toggleClass('completed', this.model.get('completed'));
 			this.$el.toggleClass('priority', this.isPrior());
+			this.$el.toggleClass('red', this.model.get('priority')===2);
+			this.$el.toggleClass('blue', this.model.get('priority')===1);
 			this.toggleVisible();
 			this.$input = this.$('.edit');
 			this.$prio= this.$('.priority-btn');
@@ -77,8 +79,8 @@ var app = app || {};
 				}
 				//return this.model.get('priority')
 
-
 		},
+		
 		isHidden: function () {
 			$('#toggle-all').show();
 			var filter = app.TodoFilter;
